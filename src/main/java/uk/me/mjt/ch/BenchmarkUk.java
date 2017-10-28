@@ -38,6 +38,7 @@ public class BenchmarkUk {
         if (new File(nodeFile).exists() && new File(wayFile).exists()) {
             System.out.println("Loading data from " + nodeFile + " and " + wayFile);
             allNodes=bf.read(nodeFile,wayFile, new StdoutStatusMonitor());
+            allNodes.sortAllNodesNeighborLists(); //Added by Leo to pre-sort the edgesFrom and edgesTo to guarantee the right result.
             hatfield = allNodes.getNodeById(253199386L);
             return true;
         } else {
